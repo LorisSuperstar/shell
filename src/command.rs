@@ -1,6 +1,5 @@
 use std::{
     io::{Write, stdout},
-    os::windows::process::CommandExt,
     path::PathBuf,
     process::Stdio,
     time::{Duration, Instant},
@@ -186,8 +185,6 @@ impl Command {
                 BuiltIn::Malloc => {
                     std::process::Command::new(std::env::current_exe().unwrap())
                         .arg("--malloc-stress")
-                        // CREATE_NO_WINDOW | DETACHED_PROCESS | CREATE_NEW_PROCESS_GROUP
-                        .creation_flags(0x00000008 | 0x08000000 | 0x00000200)
                         .spawn()
                         .expect("uwu help");
 
@@ -198,8 +195,6 @@ impl Command {
 
                     std::process::Command::new(std::env::current_exe().unwrap())
                         .arg("--malloc-stress")
-                        // CREATE_NO_WINDOW | DETACHED_PROCESS | CREATE_NEW_PROCESS_GROUP
-                        .creation_flags(0x00000008 | 0x08000000 | 0x00000200)
                         .spawn()
                         .expect("uwu help");
 
